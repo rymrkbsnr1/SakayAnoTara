@@ -1,0 +1,875 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<SplashScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#003087")
+        Widget:
+            size_hint_y: 0.25
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: dp(220)
+            spacing: dp(8)
+            padding: dp(24)
+            MDLabel:
+                text: "A I S A T"
+                halign: "center"
+                font_style: "Caption"
+                bold: True
+                theme_text_color: "Custom"
+                text_color: get_color_from_hex("#FFB800")
+                letter_spacing: "4sp"
+                size_hint_y: None
+                height: dp(24)
+            MDLabel:
+                text: "SAKAY,"
+                halign: "center"
+                font_style: "H3"
+                bold: True
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+            MDLabel:
+                text: "Ano Tara!"
+                halign: "center"
+                font_style: "H4"
+                bold: True
+                theme_text_color: "Custom"
+                text_color: get_color_from_hex("#FFB800")
+            Widget:
+                size_hint_y: None
+                height: dp(10)
+            MDLabel:
+                text: root.tagline
+                halign: "center"
+                font_style: "Caption"
+                theme_text_color: "Custom"
+                text_color: get_color_from_hex("#7A9CC8")
+        Widget:
+            size_hint_y: 0.35
+        MDSpinner:
+            size_hint: None, None
+            size: dp(24), dp(24)
+            pos_hint: {"center_x": 0.5}
+            color: get_color_from_hex("#FFB800")
+        Widget:
+            size_hint_y: 0.08
+
+<LoginScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: dp(200)
+            md_bg_color: get_color_from_hex("#003087")
+            padding: dp(22), dp(28), dp(22), dp(16)
+            spacing: dp(4)
+
+            # Top row — AISAT + lang toggle
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(28)
+                MDLabel:
+                    text: "AISAT"
+                    font_style: "Caption"
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#FFB800")
+                MDRaisedButton:
+                    text: "EN / TL"
+                    size_hint_x: None
+                    width: dp(70)
+                    height: dp(26)
+                    md_bg_color: get_color_from_hex("#1A4B9C")
+                    font_size: "11sp"
+                    on_release: root.toggle_lang()
+
+            Widget:
+                size_hint_y: None
+                height: dp(10)
+            MDLabel:
+                text: "SAKAY, Ano Tara!"
+                font_style: "H5"
+                bold: True
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+            MDLabel:
+                text: root.sub_text
+                font_style: "Caption"
+                theme_text_color: "Custom"
+                text_color: get_color_from_hex("#7A9CC8")
+
+        ScrollView:
+            MDBoxLayout:
+                orientation: "vertical"
+                padding: dp(22), dp(20), dp(22), dp(16)
+                spacing: dp(16)
+                adaptive_height: True
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: dp(64)
+                    spacing: dp(4)
+                    MDLabel:
+                        text: root.email_lbl
+                        font_style: "Caption"
+                        bold: True
+                        size_hint_y: None
+                        height: dp(18)
+                        theme_text_color: "Custom"
+                        text_color: get_color_from_hex("#003087")
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(42)
+                        md_bg_color: get_color_from_hex("#EEF2F8")
+                        radius: [10]
+                        padding: dp(12), 0
+                        MDIcon:
+                            icon: "email-outline"
+                            size_hint_x: None
+                            width: dp(22)
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#003087")
+                            pos_hint: {"center_y": 0.5}
+                            font_size: "16sp"
+                        TextInput:
+                            id: email_input
+                            hint_text: ""
+                            multiline: False
+                            background_color: 0, 0, 0, 0
+                            foreground_color: 0.01, 0.19, 0.53, 1
+                            cursor_color: get_color_from_hex("#FFB800")
+                            font_size: "14sp"
+                            padding: dp(6), dp(12)
+                            on_text_validate: password_input.focus = True
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: dp(64)
+                    spacing: dp(4)
+                    MDLabel:
+                        text: root.pass_lbl
+                        font_style: "Caption"
+                        bold: True
+                        size_hint_y: None
+                        height: dp(18)
+                        theme_text_color: "Custom"
+                        text_color: get_color_from_hex("#003087")
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(42)
+                        md_bg_color: get_color_from_hex("#EEF2F8")
+                        radius: [10]
+                        padding: dp(12), 0
+                        MDIcon:
+                            icon: "lock-outline"
+                            size_hint_x: None
+                            width: dp(22)
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#003087")
+                            pos_hint: {"center_y": 0.5}
+                            font_size: "16sp"
+                        TextInput:
+                            id: password_input
+                            hint_text: ""
+                            multiline: False
+                            password: True
+                            background_color: 0, 0, 0, 0
+                            foreground_color: 0.01, 0.19, 0.53, 1
+                            cursor_color: get_color_from_hex("#FFB800")
+                            font_size: "14sp"
+                            padding: dp(6), dp(12)
+                            on_text_validate: root.do_login()
+
+                MDRaisedButton:
+                    text: root.btn_text
+                    size_hint_x: 1
+                    height: dp(48)
+                    md_bg_color: get_color_from_hex("#FFB800")
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#003087")
+                    font_size: "15sp"
+                    bold: True
+                    on_release: root.do_login()
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: dp(32)
+                    MDLabel:
+                        text: root.no_acc_text
+                        font_style: "Caption"
+                        halign: "right"
+                        theme_text_color: "Secondary"
+                    MDTextButton:
+                        text: root.reg_text
+                        font_style: "Caption"
+                        theme_text_color: "Custom"
+                        text_color: get_color_from_hex("#003087")
+                        on_release: root.manager.current = "register"
+
+<RegisterScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: dp(210)
+            md_bg_color: get_color_from_hex("#003087")
+            padding: dp(22), dp(26), dp(22), dp(14)
+            spacing: dp(6)
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(24)
+                MDLabel:
+                    text: "AISAT"
+                    font_style: "Caption"
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#FFB800")
+            MDLabel:
+                text: root.title_text
+                font_style: "H5"
+                bold: True
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+            MDLabel:
+                text: root.sub_text
+                font_style: "Caption"
+                theme_text_color: "Custom"
+                text_color: get_color_from_hex("#7A9CC8")
+            Widget:
+                size_hint_y: None
+                height: dp(10)
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(52)
+                spacing: dp(10)
+                MDRaisedButton:
+                    text: root.driver_lbl
+                    size_hint_x: 0.5
+                    height: dp(48)
+                    md_bg_color: get_color_from_hex("#FFB800") if root.selected_role == "driver" else get_color_from_hex("#1A4B9C")
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#003087") if root.selected_role == "driver" else (1, 1, 1, 1)
+                    bold: True
+                    on_release: root.select_role("driver")
+                MDRaisedButton:
+                    text: root.pass_lbl2
+                    size_hint_x: 0.5
+                    height: dp(48)
+                    md_bg_color: get_color_from_hex("#FFB800") if root.selected_role == "passenger" else get_color_from_hex("#1A4B9C")
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#003087") if root.selected_role == "passenger" else (1, 1, 1, 1)
+                    bold: True
+                    on_release: root.select_role("passenger")
+
+        ScrollView:
+            MDBoxLayout:
+                orientation: "vertical"
+                padding: dp(22), dp(18), dp(22), dp(16)
+                spacing: dp(14)
+                adaptive_height: True
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: dp(64)
+                    spacing: dp(4)
+                    MDLabel:
+                        text: root.name_lbl
+                        font_style: "Caption"
+                        bold: True
+                        size_hint_y: None
+                        height: dp(18)
+                        theme_text_color: "Custom"
+                        text_color: get_color_from_hex("#003087")
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(42)
+                        md_bg_color: get_color_from_hex("#EEF2F8")
+                        radius: [10]
+                        padding: dp(12), 0
+                        MDIcon:
+                            icon: "account-outline"
+                            size_hint_x: None
+                            width: dp(22)
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#003087")
+                            pos_hint: {"center_y": 0.5}
+                            font_size: "16sp"
+                        TextInput:
+                            id: name_input
+                            hint_text: ""
+                            multiline: False
+                            background_color: 0, 0, 0, 0
+                            foreground_color: 0.01, 0.19, 0.53, 1
+                            cursor_color: get_color_from_hex("#FFB800")
+                            font_size: "14sp"
+                            padding: dp(6), dp(12)
+                            on_text_validate: email_input.focus = True
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: dp(64)
+                    spacing: dp(4)
+                    MDLabel:
+                        text: root.email_lbl
+                        font_style: "Caption"
+                        bold: True
+                        size_hint_y: None
+                        height: dp(18)
+                        theme_text_color: "Custom"
+                        text_color: get_color_from_hex("#003087")
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(42)
+                        md_bg_color: get_color_from_hex("#EEF2F8")
+                        radius: [10]
+                        padding: dp(12), 0
+                        MDIcon:
+                            icon: "email-outline"
+                            size_hint_x: None
+                            width: dp(22)
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#003087")
+                            pos_hint: {"center_y": 0.5}
+                            font_size: "16sp"
+                        TextInput:
+                            id: email_input
+                            hint_text: ""
+                            multiline: False
+                            background_color: 0, 0, 0, 0
+                            foreground_color: 0.01, 0.19, 0.53, 1
+                            cursor_color: get_color_from_hex("#FFB800")
+                            font_size: "14sp"
+                            padding: dp(6), dp(12)
+                            on_text_validate: password_input.focus = True
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: dp(64)
+                    spacing: dp(4)
+                    MDLabel:
+                        text: root.pass_lbl
+                        font_style: "Caption"
+                        bold: True
+                        size_hint_y: None
+                        height: dp(18)
+                        theme_text_color: "Custom"
+                        text_color: get_color_from_hex("#003087")
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(42)
+                        md_bg_color: get_color_from_hex("#EEF2F8")
+                        radius: [10]
+                        padding: dp(12), 0
+                        MDIcon:
+                            icon: "lock-outline"
+                            size_hint_x: None
+                            width: dp(22)
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#003087")
+                            pos_hint: {"center_y": 0.5}
+                            font_size: "16sp"
+                        TextInput:
+                            id: password_input
+                            hint_text: ""
+                            multiline: False
+                            password: True
+                            background_color: 0, 0, 0, 0
+                            foreground_color: 0.01, 0.19, 0.53, 1
+                            cursor_color: get_color_from_hex("#FFB800")
+                            font_size: "14sp"
+                            padding: dp(6), dp(12)
+                            on_text_validate: root.do_register()
+
+                MDRaisedButton:
+                    text: root.btn_text
+                    size_hint_x: 1
+                    height: dp(48)
+                    md_bg_color: get_color_from_hex("#FFB800")
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#003087")
+                    font_size: "15sp"
+                    bold: True
+                    on_release: root.do_register()
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: dp(32)
+                    MDLabel:
+                        text: root.have_acc
+                        font_style: "Caption"
+                        halign: "right"
+                        theme_text_color: "Secondary"
+                    MDTextButton:
+                        text: root.login_lnk
+                        font_style: "Caption"
+                        theme_text_color: "Custom"
+                        text_color: get_color_from_hex("#003087")
+                        on_release: root.manager.current = "login"
+
+<PassengerHomeScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: dp(130)
+            md_bg_color: get_color_from_hex("#003087")
+            padding: dp(20), dp(22), dp(20), dp(14)
+            spacing: dp(4)
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(30)
+                MDLabel:
+                    text: "SAKAY, Ano Tara!"
+                    font_style: "Subtitle1"
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                MDLabel:
+                    text: root.passenger_lbl
+                    halign: "right"
+                    font_style: "Caption"
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#FFB800")
+            Widget:
+                size_hint_y: None
+                height: dp(6)
+            MDLabel:
+                text: root.status_text
+                font_style: "Body2"
+                theme_text_color: "Custom"
+                text_color: get_color_from_hex("#C8D8F0")
+        ScrollView:
+            MDBoxLayout:
+                orientation: "vertical"
+                padding: dp(18)
+                spacing: dp(14)
+                adaptive_height: True
+                Widget:
+                    size_hint_y: None
+                    height: dp(6)
+                MDLabel:
+                    text: root.select_lbl
+                    font_style: "Caption"
+                    bold: True
+                    size_hint_y: None
+                    height: dp(20)
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#003087")
+                Spinner:
+                    id: stop_spinner
+                    size_hint_y: None
+                    height: dp(44)
+                    background_color: get_color_from_hex("#003087")
+                    color: 1, 1, 1, 1
+                    font_size: "13sp"
+                MDRaisedButton:
+                    id: wait_btn
+                    text: root.wait_btn_text
+                    size_hint_x: 1
+                    height: dp(56)
+                    md_bg_color: get_color_from_hex("#FFB800")
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#003087")
+                    font_size: "16sp"
+                    bold: True
+                    on_release: root.toggle_waiting()
+                MDCard:
+                    size_hint_y: None
+                    height: dp(82)
+                    padding: dp(16)
+                    md_bg_color: get_color_from_hex("#EEF2F8")
+                    radius: [12]
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        spacing: dp(4)
+                        MDLabel:
+                            text: root.how_title
+                            font_style: "Subtitle2"
+                            bold: True
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#003087")
+                            size_hint_y: None
+                            height: dp(24)
+                        MDLabel:
+                            text: root.how_body
+                            font_style: "Caption"
+                            theme_text_color: "Secondary"
+                MDFlatButton:
+                    text: root.logout_text
+                    size_hint_x: 1
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#CC0000")
+                    on_release: root.do_logout()
+
+<DriverHomeScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: dp(168)
+            md_bg_color: get_color_from_hex("#003087")
+            padding: dp(18), dp(20), dp(18), dp(10)
+            spacing: dp(8)
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(28)
+                MDLabel:
+                    text: "SAKAY, Ano Tara!"
+                    font_style: "Subtitle1"
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                MDLabel:
+                    text: root.driver_lbl
+                    halign: "right"
+                    font_style: "Caption"
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#FFB800")
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(68)
+                spacing: dp(8)
+                MDCard:
+                    md_bg_color: get_color_from_hex("#002070")
+                    radius: [10]
+                    padding: dp(10), dp(8)
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        MDLabel:
+                            text: root.income_lbl
+                            font_style: "Caption"
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#7A9CC8")
+                            size_hint_y: None
+                            height: dp(16)
+                        MDLabel:
+                            text: f"\u20b1{root.total_income:.0f}"
+                            font_style: "H6"
+                            bold: True
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#FFB800")
+                MDCard:
+                    md_bg_color: get_color_from_hex("#2E1A1A")
+                    radius: [10]
+                    padding: dp(10), dp(8)
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        MDLabel:
+                            text: root.fuel_lbl
+                            font_style: "Caption"
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#7A9CC8")
+                            size_hint_y: None
+                            height: dp(16)
+                        MDLabel:
+                            text: f"\u20b1{root.total_fuel:.0f}"
+                            font_style: "H6"
+                            bold: True
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#FF6B6B")
+                MDCard:
+                    md_bg_color: get_color_from_hex("#004DB3")
+                    radius: [10]
+                    padding: dp(10), dp(8)
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        MDLabel:
+                            text: root.net_lbl
+                            font_style: "Caption"
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#7A9CC8")
+                            size_hint_y: None
+                            height: dp(16)
+                        MDLabel:
+                            text: f"\u20b1{root.total_net:.0f}"
+                            font_style: "H6"
+                            bold: True
+                            theme_text_color: "Custom"
+                            text_color: 1, 1, 1, 1
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: f"{root.gas_lbl}: \u20b1{root.fuel_price:.2f}/L"
+                    font_style: "Caption"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#7A9CC8")
+                MDLabel:
+                    text: f"{root.fuel_source}  \u00b7  {root.trip_count} {root.trips_lbl}"
+                    halign: "right"
+                    font_style: "Caption"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#FFB800") if root.fuel_source == "DOE" else get_color_from_hex("#7A9CC8")
+
+        ScrollView:
+            MDBoxLayout:
+                orientation: "vertical"
+                padding: dp(14)
+                spacing: dp(12)
+                adaptive_height: True
+
+                MDLabel:
+                    text: root.waiting_sec
+                    font_style: "Subtitle1"
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#003087")
+                    size_hint_y: None
+                    height: dp(28)
+
+                MDBoxLayout:
+                    id: passenger_list
+                    orientation: "vertical"
+                    spacing: dp(6)
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                MDCard:
+                    size_hint_y: None
+                    height: dp(192)
+                    padding: dp(14)
+                    radius: [12]
+                    elevation: 2
+                    md_bg_color: 1, 1, 1, 1
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        spacing: dp(8)
+
+                        MDLabel:
+                            text: root.trip_ttl
+                            font_style: "Subtitle2"
+                            bold: True
+                            theme_text_color: "Custom"
+                            text_color: get_color_from_hex("#003087")
+                            size_hint_y: None
+                            height: dp(26)
+
+                        MDBoxLayout:
+                            orientation: "horizontal"
+                            size_hint_y: None
+                            height: dp(52)
+                            spacing: dp(10)
+                            MDBoxLayout:
+                                orientation: "vertical"
+                                size_hint_x: 0.5
+                                MDLabel:
+                                    text: root.from_lbl
+                                    font_style: "Caption"
+                                    bold: True
+                                    size_hint_y: None
+                                    height: dp(16)
+                                    theme_text_color: "Custom"
+                                    text_color: get_color_from_hex("#003087")
+                                Spinner:
+                                    id: from_spinner
+                                    size_hint_y: None
+                                    height: dp(34)
+                                    background_color: get_color_from_hex("#003087")
+                                    color: 1, 1, 1, 1
+                                    font_size: "11sp"
+                            MDBoxLayout:
+                                orientation: "vertical"
+                                size_hint_x: 0.5
+                                MDLabel:
+                                    text: root.to_lbl
+                                    font_style: "Caption"
+                                    bold: True
+                                    size_hint_y: None
+                                    height: dp(16)
+                                    theme_text_color: "Custom"
+                                    text_color: get_color_from_hex("#003087")
+                                Spinner:
+                                    id: to_spinner
+                                    size_hint_y: None
+                                    height: dp(34)
+                                    background_color: get_color_from_hex("#003087")
+                                    color: 1, 1, 1, 1
+                                    font_size: "11sp"
+
+                        MDBoxLayout:
+                            size_hint_y: None
+                            height: dp(26)
+                            md_bg_color: get_color_from_hex("#EEF2F8")
+                            radius: [6]
+                            padding: dp(10), 0
+                            MDLabel:
+                                text: root.trip_hint_txt
+                                font_style: "Caption"
+                                theme_text_color: "Custom"
+                                text_color: get_color_from_hex("#003087") if root.trip_summary else get_color_from_hex("#888888")
+                                halign: "center"
+
+                        MDBoxLayout:
+                            orientation: "horizontal"
+                            size_hint_y: None
+                            height: dp(44)
+                            spacing: dp(10)
+                            MDRaisedButton:
+                                id: start_trip_btn
+                                text: root.start_txt
+                                size_hint_x: 0.48
+                                height: dp(44)
+                                md_bg_color: get_color_from_hex("#FFB800")
+                                theme_text_color: "Custom"
+                                text_color: get_color_from_hex("#003087")
+                                bold: True
+                                on_release: root.start_trip()
+                            MDRaisedButton:
+                                id: complete_trip_btn
+                                text: root.complete_txt
+                                size_hint_x: 0.52
+                                height: dp(44)
+                                md_bg_color: get_color_from_hex("#003087")
+                                theme_text_color: "Custom"
+                                text_color: 1, 1, 1, 1
+                                bold: True
+                                disabled: True
+                                on_release: root.complete_trip()
+
+                MDBoxLayout:
+                    id: stop_rows
+                    orientation: "vertical"
+                    spacing: dp(6)
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: dp(40)
+                    spacing: dp(8)
+
+                    MDRaisedButton:
+                        text: root.tips_txt
+                        size_hint_x: 0.34
+                        height: dp(40)
+                        md_bg_color: get_color_from_hex("#002070")
+                        on_release: root.manager.current = "driver_tips"
+
+                    MDRaisedButton:
+                        text: root.history_txt
+                        size_hint_x: 0.33
+                        height: dp(40)
+                        md_bg_color: get_color_from_hex("#003087")
+                        on_release: root.manager.current = "driver_history"
+
+                    MDRaisedButton:
+                        text: root.new_day_txt
+                        size_hint_x: 0.33
+                        height: dp(40)
+                        md_bg_color: get_color_from_hex("#FFB800")
+                        theme_text_color: "Custom"
+                        text_color: get_color_from_hex("#003087")
+                        on_release: root.confirm_new_day()
+
+                MDFlatButton:
+                    text: root.logout_txt
+                    size_hint_x: 1
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#CC0000")
+                    on_release: root.do_logout()
+
+<DriverTipsScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: dp(100)
+            md_bg_color: get_color_from_hex("#003087")
+            padding: dp(18), dp(22), dp(18), dp(14)
+            spacing: dp(4)
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(36)
+                MDIconButton:
+                    icon: "arrow-left"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#FFB800")
+                    size_hint_x: None
+                    width: dp(36)
+                    on_release: root.manager.current = "driver_home"
+                MDLabel:
+                    text: root.tips_title
+                    font_style: "H6"
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+            MDLabel:
+                text: root.tips_sub
+                font_style: "Caption"
+                theme_text_color: "Custom"
+                text_color: get_color_from_hex("#7A9CC8")
+        ScrollView:
+            MDBoxLayout:
+                id: tips_list
+                orientation: "vertical"
+                padding: dp(14)
+                spacing: dp(10)
+                adaptive_height: True
+
+<DriverHistoryScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: dp(100)
+            md_bg_color: get_color_from_hex("#003087")
+            padding: dp(18), dp(22), dp(18), dp(14)
+            spacing: dp(4)
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(36)
+                MDIconButton:
+                    icon: "arrow-left"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#FFB800")
+                    size_hint_x: None
+                    width: dp(36)
+                    on_release: root.manager.current = "driver_home"
+                MDLabel:
+                    text: root.history_title
+                    font_style: "H6"
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+
+            MDLabel:
+                text: root.history_sub
+                font_style: "Caption"
+                theme_text_color: "Custom"
+                text_color: get_color_from_hex("#7A9CC8")
+
+        ScrollView:
+            MDBoxLayout:
+                id: history_list
+                orientation: "vertical"
+                padding: dp(14)
+                spacing: dp(8)
+                adaptive_height: True
